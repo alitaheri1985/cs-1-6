@@ -1,0 +1,50 @@
+
+namespace: cs-1-6
+env:
+  - name: MAXPLAYERS
+    value: "32"
+  - name: START_MAP
+    value: "de_dust2"
+  - name: SERVER_NAME
+    value: "intellare"
+  - name: START_MONEY
+    value: "16000"
+  - name:  BUY_TIME
+    value: "1.0"
+  - name: FRIENDLY_FIRE
+    value: "0"
+  - name: ADMIN_STEAM
+    value: "0:0:55145187"
+containerPort:
+  port: "27015"
+volumeMount:
+  - name: intellare
+    mountPath: /home/steam/cstrike/cstrike/server.cfg
+    subPath: cs-1-6
+  - name: intellare
+    mountPath: /home/steam/cstrike/cstrike/addons/amxmodx/configs/users.ini
+    subPath: users
+volume:
+  name: intellare
+resources:
+  requests:
+    memory: "250Mi"
+    cpu: "250m"
+  limits:
+    memory: "300Mi"
+    cpu: "1.5"
+service:
+  type: LoadBalancer
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80  
+    - name: game
+      protocol: UDP
+      port: 27015
+      targetPort: 27015
+deathmatch:
+  enabled: false      # true / false (null = false)
+  mode: "ffa"      # replace "ffa" or "team" (default "any")
+defaultImage: "cajuclc/cstrike-docker"
