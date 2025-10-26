@@ -16,5 +16,5 @@ jobs:
       working-directory: cs-1-6
       run: | 
         helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
-        helm repo update
+        helm upgrade -i cs-1-6 .
         helm install cs-1-6 repo-cs
