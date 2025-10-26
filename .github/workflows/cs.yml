@@ -21,7 +21,7 @@ jobs:
     
     - name: Add Git repo as Helm repo (chart in subdir)
       run: |
-        helm repo add repo-cs 'git+https://github.com/alitaheri1985/cs-1-6@cs-1-6?ref=main'
+        helm repo add repo-cs 'git+https://github.com/alitaheri1985/cs-1-6?ref=main'
 
     - name: list charts found
       run: |
