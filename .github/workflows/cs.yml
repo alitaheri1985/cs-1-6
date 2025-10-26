@@ -12,7 +12,7 @@ jobs:
     - name: create namespace
       run: kubectl create ns cs-1-6 || true
     
-    - name: install by helm
+    - name: Add Repository & install by helm
       run: | 
-        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
+        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git/Chart.yaml
         helm install cs-1-6 repo-cs
