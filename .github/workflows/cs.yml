@@ -14,5 +14,6 @@ jobs:
     
     - name: Add Repository & install by helm
       run: | 
-        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git/Chart.yaml
+        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
+        helm repo update
         helm install cs-1-6 repo-cs
