@@ -10,7 +10,7 @@ jobs:
         echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
         
     - name: create namespace
-      run: kubectl create ns cs-1-6
+      run: kubectl create ns cs-1-6 || true
     
     - name: install by helm
       run: helm install cs-1-6 .
