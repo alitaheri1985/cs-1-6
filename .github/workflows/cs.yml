@@ -16,4 +16,4 @@ jobs:
       run: | 
         helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
         helm repo update
-        helm install cs-1-6 repo-cs
+        helm install cs-1-6 repo-cs/cs-1-6
