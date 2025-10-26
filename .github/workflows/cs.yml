@@ -13,4 +13,6 @@ jobs:
       run: kubectl create ns cs-1-6 || true
     
     - name: install by helm
-      run: helm install cs-1-6 .
+      run: | 
+        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
+        helm install cs-1-6 repo-cs
