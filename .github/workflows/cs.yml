@@ -11,9 +11,23 @@ jobs:
         
     - name: create namespace
       run: kubectl create ns cs-1-6 || true
+
+    - name: Install helm-git plugin
+      run: |
+        helm plugin install https://github.com/aslafy-z/helm-git
     
-    - name: Add Repository & install by helm
-      run: | 
-        helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
-        helm upgrade -i cs-1-6 .
-        helm install cs-1-6 repo-cs
+    - name: Add Git repo as Helm repo (chart in subdir)
+      run: |
+        helm repo add repo-cs 'git+https://github.com/alitaheri1985/cs-1-6@cs-1-6?ref=main'
+
+    - name: list charts found
+      run: |
+        helm repo update
+        helm search repo repo-cs
+
+    - name: Install/upgrade from Git
+      run: |
+        helm upgrade -i cs-1-6 repo-cs/cs-1-6 \
+        --namespace your-ns --create-namespace \
+        -f values.yaml
+
