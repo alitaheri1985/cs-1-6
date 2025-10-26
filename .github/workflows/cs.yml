@@ -1,1 +1,11 @@
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
 
+    steps:
+    - name: create namespace
+      run: kubectl create ns cs-1-6
+    
+    - name: install by helm
+      run: helm install cs-1-6 .
