@@ -13,7 +13,6 @@ jobs:
       run: kubectl create ns cs-1-6 || true
     
     - name: Add Repository & install by helm
-      working-directory: cs-1-6
       run: | 
         helm repo add repo-cs https://github.com/alitaheri1985/cs-1-6.git
         helm upgrade -i cs-1-6 .
